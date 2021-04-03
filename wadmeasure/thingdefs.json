@@ -1,0 +1,30 @@
+{
+"7":{"name":"Spider Mastermind","points":100, "type":"monster"},
+"9":{"name":"Sergeant","points":10, "type":"monster"},
+"58":{"name":"Spectre","points":20, "type":"monster"},
+"64":{"name":"Archvile","points":100, "type":"monster"},
+"65":{"name":"Commando","points":30, "type":"monster"},
+"66":{"name":"Revenant","points":60, "type":"monster"},
+"67":{"name":"Mancubus","points":60, "type":"monster"},
+"68":{"name":"Arachnotron","points":50, "type":"monster"},
+"69":{"name":"Hell Knight","points":40, "type":"monster"},
+"71":{"name":"Pain Elemental","points":60, "type":"monster"},
+"3001":{"name":"DoomImp","points":10, "type":"monster"},
+"3002":{"name":"Demon","points":20, "type":"monster"},
+"3003":{"name":"BaronOfHell","points":60, "type":"monster"},
+"3004":{"name":"Zombieman","points":5, "type":"monster"},
+"3005":{"name":"Cacodemon","points":40, "type":"monster"},
+"3006":{"name":"LostSoul","points":15, "type":"monster"},
+
+"2011":{"name":"Stimpack","points":10, "type":"health"},
+"2012":{"name":"Medikit","points":25, "type":"health"},
+"2013":{"name":"Soulsphere","points":100, "type":"health"},
+"2014":{"name":"Health Bottle","points":1, "type":"health"},
+"2015":{"name":"Armor Helmet","points":1, "type":"health"},
+"2018":{"name":"Green Armor","points":30, "type":"health"},
+"2019":{"name":"Blue Armor","points":90, "type":"health"},
+"2022":{"name":"Invulnerability", "points":100, "type":"health"},
+"2023":{"name":"Berserk", "points":80, "type":"health"}
+
+}
+
