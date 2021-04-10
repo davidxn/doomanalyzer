@@ -425,7 +425,7 @@ desc2num = \
 }
 
 num2desc = {}
-for d, n in desc2num.items(): num2desc[n] = d
+for d, n in list(desc2num.items()): num2desc[n] = d
 del(d)
 del(n)
 
@@ -532,7 +532,7 @@ def encode_std(desc):
     try:
         return desc2num[desc.upper()]
     except:
-        raise Exception, "Description not recognized"
+        raise Exception("Description not recognized")
 
 def encode_gen(desc):
     """Encode a generalized (Boom) trigger description to a trigger
@@ -587,7 +587,7 @@ def encode_gen(desc):
             num |= pk(("1SECS","4SECS","9SECS","30SECS"), 8)
             num += 0x3c00
     else:
-        raise LookupError, "Insufficient information provided"
+        raise LookupError("Insufficient information provided")
     return num
 
 def find_std(desc):
@@ -601,7 +601,7 @@ def find_std(desc):
     desc = desc.upper()
     terms = desc.split()
     matches = []
-    for dsc in num2desc.values():
+    for dsc in list(num2desc.values()):
         d = dsc.split()
         matchedterms = 0
         for term in terms:

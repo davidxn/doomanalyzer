@@ -258,7 +258,7 @@ class WAD:
             assert os.path.exists(source)
             w = WadIO(source)
         else:
-            raise TypeError, "Expected WadIO or file path string"
+            raise TypeError("Expected WadIO or file path string")
         for group in self.groups:
             group.load_wadio(w)
 

@@ -112,7 +112,7 @@ class Graphic(Lump):
         columns_out = []
         for column in columns_in:
             # Split into chunks of continuous non-transparent pixels
-            postdata = filter(None, column.split(trans))
+            postdata = [_f for _f in column.split(trans) if _f]
             # Find the y position where each chunk starts
             start_rows = []
             in_trans = True
@@ -122,7 +122,7 @@ class Graphic(Lump):
                 elif in_trans:
                     start_rows.append(y)
                     in_trans = False
-            columns_out.append(zip(start_rows, postdata))
+            columns_out.append(list(zip(start_rows, postdata)))
         # Second pass: compile column+post data, adding pointers
         data = []
         columnptrs = []
@@ -149,7 +149,7 @@ class Graphic(Lump):
         tran_index = tran_index or self.palette.tran_index
         output = [chr(tran_index)] * (width*height)
         pointers = unpack('%il'%width, data[8 : 8 + width*4])
-        for x in xrange(width):
+        for x in range(width):
             pointer = pointers[x]
             while data[pointer] != '\xff':
                 post_length = ord(data[pointer+1])
@@ -196,9 +196,9 @@ class Graphic(Lump):
                 B = [ord(c) for c in srcpal[2::3]]
                 # Work around PIL bug: "RGB" loads as "BGR" from bmps (?)
                 if filename[-4:].lower() == '.bmp':
-                    srcpal = zip(B, G, R)
+                    srcpal = list(zip(B, G, R))
                 else:
-                    srcpal = zip(R, G, B)
+                    srcpal = list(zip(R, G, B))
                 lexicon = [chr(self.palette.match(c)) for c in srcpal]
                 pixels = join([lexicon[ord(b)] for b in pixels])
             else:
@@ -215,7 +215,7 @@ class Graphic(Lump):
                         pixels = pixels.replace(chr(ri//3),
                             chr(self.palette.tran_index))
         else:
-            raise TypeError, "image mode must be 'P' or 'RGB'"
+            raise TypeError("image mode must be 'P' or 'RGB'")
 
         self.from_raw(pixels, width, height, xoff, yoff, self.palette)
 
@@ -275,7 +275,7 @@ class Flat(Graphic):
         if sz == 4160: return (64, 65)
         root = int(sz**0.5)
         if root**2 != sz:
-            raise TypeError, "unable to determine size: not a square number"
+            raise TypeError("unable to determine size: not a square number")
         return (root, root)
 
     dimensions = property(get_dimensions)
